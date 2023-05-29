@@ -7,8 +7,8 @@ This image will create two containers:
 This container creates a fresh wordpress site, you can use to prototype any setup 
 or you can load your wordpress files and database to restore and test a backup.
 
-## Access
-Ports 8080 and 8443 are available on localhost to test the wordpress site.
+## Web Access
+TCP Ports 8080 and 8443 are available on localhost to test the wordpress site.
 also it is possible to connect directly to container using standard ports.
 
 To get web container IP use this command:
@@ -24,12 +24,17 @@ https://localhost:8443
 http://<container ip address>
 https://<container ip address>
 
+### Certificate
+This web server create a self-signed certificate, you must trust that in your browser to
+continue.
+
 ## Shares
 The container wp_web will mount a home folder inside the container
 to manipulate the wordpress site files.
 
 ## Database
-If there you are testing a site you can load a mysql backup to the wp_db container.
+If you are testing a site you can load a mysql backup to the wp_db container.
+The database is a mariadb listening on a standard port 3306/tcp.
 
 To get db container IP use this command:
 ``` bash
