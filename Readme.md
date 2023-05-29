@@ -21,8 +21,8 @@ docker container inspect wp_web | grep IPAddress | tail -n1 | cut -d\" -f4
 - https://localhost:8443
 
 ### Direct container URLs:
-- http://<container ip address>
-- https://<container ip address>
+- http://"container ip address"
+- https://"container ip address"
 
 ### Certificate
 This web server create a self-signed certificate, you must trust that in your browser to
