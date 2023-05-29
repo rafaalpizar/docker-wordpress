@@ -3,22 +3,27 @@ version: '3.1'
 services:
 
   web:
-    image: library/wordpress:latest
+    build: .
+    image: wordpress-secure
+    container_name: wp_web
     restart: always
     depends_on:
       - db
     ports:
       - 8080:80
+      - 8443:443
     environment:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: exampleuser
       WORDPRESS_DB_PASSWORD: examplepass
       WORDPRESS_DB_NAME: exampledb
     volumes:
-      - web:/var/www/html
+      # mount local directory inside container www root
+      - ~/share/wordpress_container:/var/www/html
 
   db:
     image: library/mariadb:latest
+    container_name: wp_db
     restart: always
     environment:
       MARIADB_DATABASE: exampledb
@@ -29,6 +34,5 @@ services:
       - db:/var/lib/mysql
 
 volumes:
-  web:
   db:
 
