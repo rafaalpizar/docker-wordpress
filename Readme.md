@@ -58,5 +58,7 @@ exampleuser, examplepass and exampledb are the settings inside the docker-compos
 ## Iptables
 If there is a need to use standard ports on 127.0.0.1, below iptables command can help
 (must be run with root grants):
-1. iptables -t nat -I OUTPUT -s 127.0.0.1 -d 127.0.0.1 -p tcp --dport 80 -j REDIRECT --to-port 8080
-1. iptables -t nat -I OUTPUT -s 127.0.0.1 -d 127.0.0.1 -p tcp --dport 443 -j REDIRECT --to-port 8443
+```bash
+iptables -t nat -I OUTPUT -s 127.0.0.1 -d 127.0.0.1 -p tcp --dport 80 -j REDIRECT --to-port 8080
+iptables -t nat -I OUTPUT -s 127.0.0.1 -d 127.0.0.1 -p tcp --dport 443 -j REDIRECT --to-port 8443
+```
