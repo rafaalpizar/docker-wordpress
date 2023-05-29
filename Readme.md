@@ -32,7 +32,9 @@ continue.
 The container wp_web will mount a host folder inside the containerto manipulate the wordpress site files.
 
 Mapping:
+
 |Host|Container|
+|-|-|
 |~/share/wordpress_container|/var/www/html|
 
 
