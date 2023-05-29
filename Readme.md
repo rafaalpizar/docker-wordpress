@@ -1,10 +1,10 @@
 # Wordpress HTTP and HTTPs support and MariaDb
 
-This image will create two containers:
+This docker compose service will create two containers:
 - wp_web
 - wp_db
 
-This container creates a fresh wordpress site, you can use to prototype any setup 
+This is a fresh wordpress site, you can use to prototype any setup 
 or you can load your wordpress files and database to restore and test a backup.
 
 ## Web Access
@@ -17,20 +17,24 @@ docker container inspect wp_web | grep IPAddress | tail -n1 | cut -d\" -f4
 ```
 
 ### Local host URL:
-http://localhost:8080
-https://localhost:8443
+- http://localhost:8080
+- https://localhost:8443
 
 ### Direct container URLs:
-http://<container ip address>
-https://<container ip address>
+- http://<container ip address>
+- https://<container ip address>
 
 ### Certificate
 This web server create a self-signed certificate, you must trust that in your browser to
 continue.
 
 ## Shares
-The container wp_web will mount a home folder inside the container
-to manipulate the wordpress site files.
+The container wp_web will mount a host folder inside the containerto manipulate the wordpress site files.
+
+Mapping:
+|Host|Container|
+|~/share/wordpress_container|/var/www/html|
+
 
 ## Database
 If you are testing a site you can load a mysql backup to the wp_db container.
