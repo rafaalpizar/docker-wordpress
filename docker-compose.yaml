@@ -14,25 +14,22 @@ services:
       - 8443:443
     environment:
       WORDPRESS_DB_HOST: db
-      WORDPRESS_DB_USER: exampleuser
-      WORDPRESS_DB_PASSWORD: examplepass
-      WORDPRESS_DB_NAME: exampledb
+      WORDPRESS_DB_USER: ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PASS}
+      WORDPRESS_DB_NAME: ${DB_NAME}
     volumes:
       # mount local directory inside container www root
-      - ~/share/wordpress_container:/var/www/html
+      - ${local_web_dir}:/var/www/html
 
   db:
     image: library/mariadb:latest
     container_name: wp_db
     restart: always
     environment:
-      MARIADB_DATABASE: exampledb
-      MARIADB_USER: exampleuser
-      MARIADB_PASSWORD: examplepass
+      MARIADB_DATABASE: ${DB_NAME}
+      MARIADB_USER: ${DB_USER}
+      MARIADB_PASSWORD: ${DB_PASS}
       MARIADB_RANDOM_ROOT_PASSWORD: '1'
     volumes:
-      - db:/var/lib/mysql
-
-volumes:
-  db:
+      - ${local_db_dir}:/var/lib/mysql
 
